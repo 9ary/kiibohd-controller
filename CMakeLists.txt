@@ -22,8 +22,8 @@ set( CHIP
 #       "at90usb646"       # Teensy++ 1.0 (avr)
 #       "at90usb1286"      # Teensy++ 2.0 (avr)
 #       "mk20dx128"        # Teensy   3.0 (arm)
-	"mk20dx128vlf5"    # McHCK       mk20dx128vlf5
-#       "mk20dx256"        # Teensy   3.1,3.2 (arm)
+#	"mk20dx128vlf5"    # McHCK       mk20dx128vlf5
+        "mk20dx256"        # Teensy   3.1,3.2 (arm)
 #       "mk20dx256vlh7"    # Kiibohd-dfu mk20dx256vlh7
 	CACHE STRING "Microcontroller Chip"
 )
@@ -65,7 +65,7 @@ include( initialize )
 #| Please look at the {Scan,Macro,Output,Debug} for information on the modules and how to create new ones
 
 ##| Deals with acquiring the keypress information and turning it into a key index
-set(   ScanModule "MD1"
+set(   ScanModule "TEK"
 	CACHE STRING "Scan Module" )
 
 ##| Provides the mapping functions for DefaultMap and handles any macro processing before sending to the OutputModule
@@ -115,12 +115,12 @@ set(     BaseMap "defaultMap"
 
 ##| Layer additonal .kll maps on the BaseMap, layers are in order from 1st to nth
 ##| Can be set to ""
-set(  DefaultMap "md1Overlay stdFuncMap"
+set(  DefaultMap ""
 	CACHE STRING "KLL DefaultMap" )
 
 ##| ParitalMaps available on top of the BaseMap. See above for syntax on specifying multiple layers vs. layering
 ##| Can be set to ""
-set( PartialMaps "hhkbpro2"
+set( PartialMaps "tek_fn" "tek_game" "tek_numpad"
 	CACHE STRING "KLL PartialMaps/Layer Definitions" )
 
 

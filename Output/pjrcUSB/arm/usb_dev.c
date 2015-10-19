@@ -35,6 +35,8 @@
 #include <Lib/OutputLib.h>
 #include <print.h>
 #include <kll_defs.h>
+#include <matrix_scan.h>
+#include <matrix_setup.h>
 
 // Local Includes
 #include "usb_dev.h"
@@ -178,8 +180,12 @@ static uint32_t power_neg_time;
 static uint8_t usb_dev_sleep = 0;
 
 
+extern const GPIO_Pin ledCaps;
+extern const GPIO_Pin ledFn;
+extern const GPIO_Pin ledNum;
 
 // ----- Functions -----
+extern uint8_t Matrix_pin( GPIO_Pin gpio, Type type );
 
 static void endpoint0_stall()
 {
@@ -919,6 +925,9 @@ static void usb_control( uint32_t stat )
 
 			// XXX ZLP causes timeout/delay, why? -HaaTa
 			//endpoint0_transmit( NULL, 0 );
+
+			Matrix_pin(ledCaps, (USBKeys_LEDs & 0x2) ? Type_StrobeOff : Type_StrobeOn);
+			Matrix_pin(ledNum, (USBKeys_LEDs & 0x1) ? Type_StrobeOff : Type_StrobeOn);
 		}
 		#endif
 

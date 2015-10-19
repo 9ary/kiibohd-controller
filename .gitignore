@@ -12,6 +12,7 @@
 *.lss
 *.sym
 *.map
+build/*
 
 # Packages #
 ############

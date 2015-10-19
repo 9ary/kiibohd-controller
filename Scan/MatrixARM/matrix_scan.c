@@ -38,6 +38,9 @@
 // Matrix Configuration
 #include <matrix.h>
 
+// USB
+#include <output_com.h>
+
 
 
 // ----- Defines -----
@@ -342,6 +345,29 @@ void Matrix_scan( uint16_t scanNum )
 				state->curState  = KeyState_Invalid;
 			}
 
+			// Handle USB LEDs
+			int ledOn = 0;
+			if ( sense == 11 )
+			{
+				switch ( strobe )
+				{
+				case 0:
+					ledOn = USBKeys_LEDs & 0x1;
+					break;
+
+				case 1:
+					ledOn = USBKeys_LEDs & 0x2;
+					break;
+
+				case 2:
+					ledOn = USBKeys_LEDs & 0x4;
+					break;
+
+				default:
+					break;
+				}
+			}
+
 			// Signal Detected
 			// Increment count and right shift opposing count
 			// This means there is a maximum of scan 13 cycles on a perfect off to on transition
@@ -349,7 +375,7 @@ void Matrix_scan( uint16_t scanNum )
 			// Somewhat longer with switch bounciness
 			// The advantage of this is that the count is ongoing and never needs to be reset
 			// State still needs to be kept track of to deal with what to send to the Macro module
-			if ( Matrix_pin( Matrix_rows[ sense ], Type_Sense ) )
+			if ( Matrix_pin( Matrix_rows[ sense ], Type_Sense ) || ledOn)
 			{
 				// Only update if not going to wrap around
 				if ( state->activeCount < DebounceDivThreshold_define ) state->activeCount += 1;
