@@ -25,7 +25,7 @@ S0x0E : U"Minus";
 S0x7C : U"Equal";
 S0x7A : U"Backslash";
 S0x31 : U"Backtick";
-S0x33 : U"ISO/";
+S0x33 : U"App";
 S0x6E : U"Tab";
 S0x36 : U"Delete";
 S0x6B : U"Q";
@@ -70,7 +70,7 @@ S0x41 : U"RShift";
 S0x3A : U"LAlt";
 S0x5B : U"LGui"; # Left blank
 S0x6D : U"LGui"; # Middle symbol
-S0x52 : U"App";  # Right blank
+S0x52 : U"RGui";  # Right blank
 S0x38 : U"RAlt";
 S0x4C : U"Up";
 S0x26 : U"Down";
@@ -92,7 +92,7 @@ S0x27 : U"F9";
 S0x25 : U"F10";
 S0x2F : U"F11";
 S0x2D : U"F12";
-S0x06 : CONS"Eject";
+S0x06 : CONS"Sleep";
 S0x56 : U"Insert";
 S0x3D : U"PrintScreen";
 S0x5C : layerShift(1); # Fn
