@@ -6,6 +6,9 @@ KLL = 0.3c;
 # Modified Date
 Date = 2015-10-06;
 
+enableMouse = 0;
+enableJoystick = 0;
+
 #flashModeEnabled = 1;
 
 S0x63 : U"Esc";
