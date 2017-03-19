@@ -133,6 +133,17 @@ void CustomAction_gameLayer_capability( TriggerMacro *trigger, uint8_t state, ui
 	Macro_layerState( state, stateType, 2, 0x04 );
 }
 
+void CustomAction_capsLock_capability( TriggerMacro *trigger, uint8_t state, uint8_t stateType, uint8_t *args )
+{
+	Matrix_pin(ledCaps, state ? Type_StrobeOff : Type_StrobeOn);
+}
+
+void CustomAction_numLock_capability( TriggerMacro *trigger, uint8_t state, uint8_t stateType, uint8_t *args )
+{
+	// TODO Set layer state
+	Matrix_pin(ledCaps, state ? Type_StrobeOff : Type_StrobeOn);
+}
+
 void CustomAction_action1_capability( TriggerMacro *trigger, uint8_t state, uint8_t stateType, uint8_t *args )
 {
 	// Display capability name

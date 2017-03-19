@@ -100,9 +100,11 @@ S0x56 : U"Insert";
 S0x3D : U"PrintScreen";
 S0x5C : layerShift(1); # Fn
 
-S0x58 : layerShift(3); # NumLock LED
-S0x59 : None; # CapsLock LED
+#S0x58 : layerShift(3); # NumLock LED
+#S0x59 : None; # CapsLock LED
 #S0xF2 : layerShift(1); # ScrollLock LED
+
+I"NumLock" : capsLock();
 
 # Custom Action Examples
 
@@ -116,4 +118,6 @@ S0x59 : None; # CapsLock LED
 #blockKey => CustomAction_blockKey_capability( usbCode : 1 );
 
 gameLayer => CustomAction_gameLayer_capability();
+capsLock => CustomAction_capsLock_capability();
+numLock => CustomAction_numLock_capability();
 
