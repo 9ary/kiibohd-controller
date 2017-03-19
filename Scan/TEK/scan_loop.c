@@ -32,6 +32,9 @@
 #include <matrix_setup.h>
 #include <macro.h>
 
+// KLL Include
+#include <kll.h>
+
 // Local Includes
 #include "scan_loop.h"
 
@@ -117,7 +120,7 @@ inline void Scan_finishedWithOutput( uint8_t sentKeys )
 // Refer to kll.h in Macros/PartialMap for state and stateType information
 static int gameLed = 0;
 extern void Macro_layerState( uint8_t state, uint8_t stateType, uint16_t layer, uint8_t layerState );
-void CustomAction_gameLayer_capability( uint8_t state, uint8_t stateType, uint8_t *args )
+void CustomAction_gameLayer_capability( TriggerMacro *trigger, uint8_t state, uint8_t stateType, uint8_t *args )
 {
 	// Only use capability on press
 	// TODO Analog
@@ -130,7 +133,7 @@ void CustomAction_gameLayer_capability( uint8_t state, uint8_t stateType, uint8_
 	Macro_layerState( state, stateType, 2, 0x04 );
 }
 
-void CustomAction_action1_capability( uint8_t state, uint8_t stateType, uint8_t *args )
+void CustomAction_action1_capability( TriggerMacro *trigger, uint8_t state, uint8_t stateType, uint8_t *args )
 {
 	// Display capability name
 	// XXX This is required for debug cli to give you a list of capabilities
@@ -145,7 +148,7 @@ void CustomAction_action1_capability( uint8_t state, uint8_t stateType, uint8_t 
 }
 
 uint8_t CustomAction_blockHold_storage = 0;
-void CustomAction_blockHold_capability( uint8_t state, uint8_t stateType, uint8_t *args )
+void CustomAction_blockHold_capability( TriggerMacro *trigger, uint8_t state, uint8_t stateType, uint8_t *args )
 {
 	// Display capability name
 	if ( stateType == 0xFF && state == 0xFF )
@@ -181,7 +184,7 @@ void CustomAction_blockHold_capability( uint8_t state, uint8_t stateType, uint8_
 	}
 }
 
-void CustomAction_blockKey_capability( uint8_t state, uint8_t stateType, uint8_t *args )
+void CustomAction_blockKey_capability( TriggerMacro *trigger, uint8_t state, uint8_t stateType, uint8_t *args )
 {
 	// Display capability name
 	if ( stateType == 0xFF && state == 0xFF )
@@ -196,8 +199,8 @@ void CustomAction_blockKey_capability( uint8_t state, uint8_t stateType, uint8_t
 	// If key is not blocked, process
 	if ( key != CustomAction_blockHold_storage )
 	{
-		extern void Output_usbCodeSend_capability( uint8_t state, uint8_t stateType, uint8_t *args );
-		Output_usbCodeSend_capability( state, stateType, &key );
+		extern void Output_usbCodeSend_capability( TriggerMacro *trigger, uint8_t state, uint8_t stateType, uint8_t *args );
+		Output_usbCodeSend_capability( trigger, state, stateType, &key );
 	}
 }
 
