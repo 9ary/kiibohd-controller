@@ -91,7 +91,7 @@ extern void Macro_appendResultMacroToPendingList( const TriggerMacro *triggerMac
 // ----- Functions -----
 
 // Determine if long ResultMacro (more than 1 seqence element)
-inline uint8_t Macro_isLongResultMacro( const ResultMacro *macro )
+static inline uint8_t Macro_isLongResultMacro( const ResultMacro *macro )
 {
 	// Check the second sequence combo length
 	// If non-zero return non-zero (long sequence)
@@ -114,7 +114,7 @@ inline uint8_t Macro_isLongTriggerMacro( const TriggerMacro *macro )
 
 
 // Votes on the given key vs. guide, short macros
-inline TriggerMacroVote Macro_evalShortTriggerMacroVote( TriggerGuide *key, TriggerGuide *guide )
+static inline TriggerMacroVote Macro_evalShortTriggerMacroVote( TriggerGuide *key, TriggerGuide *guide )
 {
 	// Depending on key type
 	switch ( guide->type )
@@ -165,7 +165,7 @@ inline TriggerMacroVote Macro_evalShortTriggerMacroVote( TriggerGuide *key, Trig
 
 // Votes on the given key vs. guide, long macros
 // A long macro is defined as a guide with more than 1 combo
-inline TriggerMacroVote Macro_evalLongTriggerMacroVote( TriggerGuide *key, TriggerGuide *guide )
+static inline TriggerMacroVote Macro_evalLongTriggerMacroVote( TriggerGuide *key, TriggerGuide *guide )
 {
 	// Depending on key type
 	switch ( guide->type )
@@ -388,7 +388,7 @@ TriggerMacroEval Macro_evalTriggerMacro( var_uint_t triggerMacroIndex )
 
 
 // Update pending trigger list
-inline void Macro_updateTriggerMacroPendingList()
+static inline void Macro_updateTriggerMacroPendingList()
 {
 	// Iterate over the macroTriggerListBuffer to add any new Trigger Macros to the pending list
 	for ( var_uint_t key = 0; key < macroTriggerListBufferSize; key++ )
