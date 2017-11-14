@@ -95,7 +95,7 @@ S0x27 : U"F9";
 S0x25 : U"F10";
 S0x2F : U"F11";
 S0x2D : U"F12";
-S0x06 : CONS"Sleep";
+S0x06 : CONS"Eject";
 S0x56 : U"Insert";
 S0x3D : U"PrintScreen";
 S0x5C : layerShift(1); # Fn
