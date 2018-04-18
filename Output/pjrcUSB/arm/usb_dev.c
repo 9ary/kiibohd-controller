@@ -1463,6 +1463,8 @@ restart:
 
 		// is this necessary?
 		USB0_CTL = USB_CTL_USBENSOFEN;
+
+		USBKeys_Protocol = USBProtocol_define;
 		return;
 	}
 
